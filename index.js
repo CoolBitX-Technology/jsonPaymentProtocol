@@ -213,7 +213,9 @@ PaymentProtocol.prototype.sendPayment = function sendPayment(currency, signedRaw
   let requestOptions = _.merge(this.options, {
     url: url,
     headers: {
-      'Content-Type': 'application/payment'
+      'Content-Type': 'application/payment',
+      'BP_PARTNER' : 'CoolWallet',
+      'BP_PARTNER_VERSION' : '1.0.0'
     },
     body: JSON.stringify({
       currency: currency,

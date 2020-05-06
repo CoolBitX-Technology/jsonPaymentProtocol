@@ -3,7 +3,8 @@
 const crypto = require('crypto');
 const query = require('querystring');
 const url = require('url');
-const util = require('util');
+//const util = require('util');
+const {promisify} = require("es6-promisify");
 
 //Modules
 const _ = require('lodash');
@@ -57,7 +58,7 @@ PaymentProtocol.prototype.getRawPaymentRequest = function getRawPaymentRequest(p
  * Makes a request to the given url and returns the raw JSON string retrieved as well as the headers
  * @param url {string} the payment protocol specific url (https)
  */
-PaymentProtocol.prototype.getRawPaymentRequestAsync = util.promisify(PaymentProtocol.prototype.getRawPaymentRequest);
+PaymentProtocol.prototype.getRawPaymentRequestAsync = promisify(PaymentProtocol.prototype.getRawPaymentRequest);
 
 /**
  * Given a raw payment protocol body, parses it and validates it against the digest header
@@ -104,7 +105,7 @@ PaymentProtocol.prototype.parsePaymentRequest = function parsePaymentRequest(raw
  * @param rawBody {string} Raw JSON string retrieved from the payment protocol server
  * @param headers {object} Headers sent by the payment protocol server
  */
-PaymentProtocol.prototype.parsePaymentRequestAsync = util.promisify(PaymentProtocol.prototype.parsePaymentRequest);
+PaymentProtocol.prototype.parsePaymentRequestAsync = promisify(PaymentProtocol.prototype.parsePaymentRequest);
 
 /**
  * Verifies the signature of a given payment request is both valid and from a trusted key
@@ -188,7 +189,7 @@ PaymentProtocol.prototype.verifyPaymentRequest = function verifyPaymentRequest(r
  * @param trustedKeys {Object} An object containing all keys trusted by this client
  * @returns {String} The owner of the key which signed this request (ie BitPay Inc.) which should be displayed to the user
  */
-PaymentProtocol.prototype.parsePaymentRequestAsync = util.promisify(PaymentProtocol.prototype.parsePaymentRequest);
+PaymentProtocol.prototype.parsePaymentRequestAsync = promisify(PaymentProtocol.prototype.parsePaymentRequest);
 
 
 /**
@@ -247,7 +248,7 @@ PaymentProtocol.prototype.sendPayment = function sendPayment(currency, signedRaw
  * @param signedRawTransaction {string} Hexadecimal format raw signed transaction
  * @param url {string} the payment protocol specific url (https)
  */
-PaymentProtocol.prototype.sendPaymentAsync = util.promisify(PaymentProtocol.prototype.sendPayment);
+PaymentProtocol.prototype.sendPaymentAsync = promisify(PaymentProtocol.prototype.sendPayment);
 
 module.exports = PaymentProtocol;
 

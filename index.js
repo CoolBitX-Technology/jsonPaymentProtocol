@@ -12,7 +12,6 @@ const secp256k1 = require('secp256k1');
 
 function PaymentProtocol(options) {
   this.options = _.merge({
-    strictSSL: true
   }, options);
 }
 

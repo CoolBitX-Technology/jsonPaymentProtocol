@@ -38,7 +38,9 @@ PaymentProtocol.prototype.getRawPaymentRequest = function getRawPaymentRequest(p
   let requestOptions = _.merge(this.options, {
     url: paymentUrl,
     headers: {
-      'Accept': 'application/payment-request'
+      'Accept': 'application/payment-request',
+      'BP_PARTNER' : 'CoolWallet',
+      'BP_PARTNER_VERSION' : '1.0.0'
     }
   });
 
